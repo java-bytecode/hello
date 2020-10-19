@@ -1,0 +1,101 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Questrial&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Kumbh+Sans:wght@700&family=Red+Hat+Display:wght@500&display=swap');
+
+/* 2nd Child
+   Settings */
+
+form > div {
+    padding: 2%;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(24, 24, 24, 0.9);
+}
+
+.settingsForm input[type = "text"], .settingsForm textarea, .settingsForm input[type = "email"] {
+    border: none;
+    background: none;
+    display: block;
+    margin: 1px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.settingsForm input[type = "submit"] {
+    border: 0;
+    background: none;
+    display: inline;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid aqua;
+    padding: 14px 20px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: 'Red Hat Display', sans-serif;
+    font-family: 'Comfortaa', cursive;
+}
+
+.settingsForm input[type = "submit"]:hover {
+    background: #38dad1;
+}
+
+.settingsForm input[type = "text"]:focus, .settingsForm textarea:focus, .settingsForm input[type = "email"]:focus {
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+form > div:nth-child(1) {
+    border-left: 6px solid rgb(239, 71, 111);
+   }
+
+form > div:nth-child(2) {
+    border-left: 6px solid rgb(255, 209, 102);
+   }
+
+form > div:nth-child(3) {
+    border-left: 6px solid rgb(6, 214, 160);
+   }
+
+.settings {
+    height: auto;
+    width: 50vw;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 7%;
+    background-color:rgba(24, 24, 24, 0.9);
+    text-align: center;
+}
+
+.settings h1 {
+    font-family: 'Kumbh Sans', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    padding-top: 2rem;
+    
+}
+
+.settingsForm input::placeholder, .settingsForm textarea::placeholder {
+    color: white;
+}
+
+form {
+    margin-top: 5%;
+}
+
+label {
+    font-family: 'Red Hat Display', sans-serif;
+    color: white;
+}

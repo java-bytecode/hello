@@ -1,0 +1,72 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 800;
+    font-size: 40px;
+    color: aqua;
+    letter-spacing: 2px;
+    text-decoration: none;
+    margin-right: auto;
+}
+
+li, a, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 10%; /* 30px top and bottom, 10% on the sides */
+    background-color:rgba(53, 53, 53, 0.8);
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/4024630.jpg');
+    background-size: cover;
+    background-blend-mode: darken; */
+}
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 15px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color:#0088a9
+}
+
+button {
+    margin-left: 15px;
+    padding: 9px 25px;
+    background-color: rgb(0, 204, 255);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(0,136,169,0.8);
+}

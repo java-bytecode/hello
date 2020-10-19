@@ -1,0 +1,115 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    font-family: 'Bebas Neue', cursive;
+    font-weight: 1000;
+    font-size: 80px;
+    color: transparent;
+    letter-spacing: 2px;
+    text-decoration: none;
+    margin-right: auto;
+    -webkit-text-stroke: 1px aqua;
+}
+
+.logotext {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: white;
+    padding-top: 5%;
+}
+
+.desctext, .footer {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: white;
+    padding-top: 10%;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: rgb(175, 175, 175);
+    text-align: center;
+    padding-bottom: 1%;
+    font-size: 1em;
+}
+
+li, a, button {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #edf0f1;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 50px 10%; /* 30px top and bottom, 10% on the sides */
+    background-image: url('../assets/bg/4383471.jpg');
+    background-size: cover;
+    animation: menubarpaddingbottom 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes menubarpaddingbottom {
+    100% {
+        padding-bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    @keyframes menubarpaddingbottom {
+        100% {
+            padding-bottom: 20%;
+        }
+    }
+  }
+
+.nav__links {
+    list-style: none;
+}
+
+.nav__links li {
+    display: inline-block;
+    padding: 0px 15px;
+}
+
+.nav__links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav__links li a:hover {
+    color:#0088a9
+}
+
+button {
+    margin-left: 15px;
+    padding: 9px 25px;
+    background-color: rgba(0,136,169,1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgba(0,136,169,0.8);
+}

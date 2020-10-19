@@ -1,0 +1,107 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Kumbh+Sans:wght@700&family=Red+Hat+Display:wght@500&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginBox {
+    height: 400px;
+    width: 80%;
+    padding: 80px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url("../assets/bg/59128.jpg");
+    /* background-position: right bottom; */
+    background-size: cover;
+    text-align: center;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    flex: 50%;
+    /*align-items: space-around;*/
+}
+
+.loginBox h1 {
+    font-family: 'Kumbh Sans', sans-serif;
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.login input[type = "text"], .login input[type = "password"] {
+    border: none;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 10px 10px;
+    width: 200px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    font-family: 'Red Hat Display', sans-serif;
+}
+
+.login input::placeholder {
+    color: white;
+}
+
+.login input[type = "text"]:focus, .login input[type = "password"]:focus {
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+.login input[type = "submit"] {
+    border: 0;
+    background: none;
+    display: inline;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid aqua;
+    padding: 14px 20px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: 'Red Hat Display', sans-serif;
+    font-family: 'Comfortaa', cursive;
+}
+
+.login input[type = "submit"]:hover {
+    background: #38dad1;
+}
+
+.signup {
+    font-family: 'Kumbh Sans', sans-serif;
+}
+
+@media screen and (max-width: 1024px) {
+    .logocolumn{
+        padding-right: 5vw;
+    }
+    .logincolumn {
+        padding-left: 5vw;
+    }
+  }
+
+.verticalLine {
+    border: 1px solid;
+    height: 100%;
+    border-image: 
+    linear-gradient(
+      to bottom, 
+      white, 
+      rgba(0, 0, 0, 0)
+    ) 1 100%;
+}

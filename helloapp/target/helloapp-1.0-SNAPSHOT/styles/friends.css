@@ -1,0 +1,77 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Questrial&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
+
+/* 2nd Child
+   Friends */
+
+.friends {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 50vw;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 7%;
+    justify-content: center;
+    margin-bottom: 2%;
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    background-color:rgba(53, 53, 53, 0.7);
+}
+
+.friends > .friend {
+    background-color:#25CCF7;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.friends > .friend:nth-child(1) {
+    background-color: rgba(14, 27, 42, 0.8);
+    border-radius: 8px 8px 0px 0px;
+}
+
+.friends > .friend:nth-child(2) {
+    background-color: rgba(27, 38, 59, 0.7);
+    border: none;
+}
+
+.friends > .friend:nth-child(3) {
+    background-color: rgba(65, 90, 119, 0.7);
+    border: none;
+}
+
+.friends > .friend:nth-child(4) {
+    background-color:rgba(119, 141, 169, 0.7);
+    border: none;
+}
+
+.friends > .friend:nth-child(5) {
+    background-color:rgba(14, 27, 42, 0.7);
+    border-radius: 0px 0px 8px 8px;
+    /* padding-bottom: 1%; */
+    border: none;
+}
+
+.user > img {
+    height: 1.5em;
+    width: auto;
+    padding-left: 2%;
+    padding-right: 0.1em;
+}
+
+#friendURL {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    color: white;
+    /*padding: 1em;*/
+}
+
+.role {
+   font-family: 'Questrial', sans-serif;
+   color: white;
+   padding: 1em; 
+}

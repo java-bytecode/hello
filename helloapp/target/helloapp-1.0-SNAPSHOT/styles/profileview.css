@@ -1,0 +1,163 @@
+/*
+Author: Vineeth Penugonda
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Questrial&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    background: url('../assets/bg/4024630.jpg') no-repeat center center fixed; /* Check property */
+    background-size: cover;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* background: #e74c3c; */
+}
+
+/* 1st Child
+   Profile Image, Profile Name, Description */
+
+.profileInfo {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 30vw;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 7%;
+    flex-wrap: wrap;
+    background-color:rgba(53, 53, 53, 0.7);
+}
+
+@media screen and (max-width: 1024px){
+    .profileInfo {
+        height: auto;
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .profileInfo {
+        height: auto;
+        width: 28vw;
+    }
+}
+
+.photo img {
+    /* padding-top: 10%; */
+    border-radius: 8px 8px 0px 0px;
+    width: 100%;
+    height: auto;
+}
+
+.username {
+    font-family: 'Varela Round', sans-serif;
+    font-size: 30px;
+    color: white;
+    padding: 5%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+
+.roletext, #desc {
+    font-family: 'Questrial', sans-serif;
+    text-transform: uppercase;
+    padding: 12px 15px;
+    background-color: aliceblue;
+    text-align: center;
+    border-left: 6px solid red;
+    border-right: 6px solid red;
+}
+
+#desc {
+    border-left: none;
+    border-right: none;
+    text-align: center;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+#roleTextIdentifier {
+    font-weight: bold;
+}
+
+.roletext {
+    border-bottom: 1px solid;
+}
+
+#divider {
+    border-right: 3px solid;
+    margin: 0.2em;
+}
+
+#roleType {
+    margin-left: 1%;
+}
+
+/* 2nd Child
+   Status */
+
+.status {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 50vw;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 7%;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    background-color:rgba(53, 53, 53, 0.7);
+}
+
+.status > .post {
+    background-color:#25CCF7;
+    padding-bottom: 2%;
+}
+
+.status > .post:nth-child(1) {
+    background-color: rgba(14, 27, 42, 0.8);
+    border-radius: 8px 8px 0px 0px;
+}
+
+.status > .post:nth-child(2) {
+    background-color: rgba(27, 38, 59, 0.7);
+    border: none;
+}
+
+.status > .post:nth-child(3) {
+    background-color: rgba(65, 90, 119, 0.7);
+    border: none;
+}
+
+.status > .post:nth-child(4) {
+    background-color:rgba(119, 141, 169, 0.7);
+    border: none;
+}
+
+.status > .post:nth-child(5) {
+    background-color:rgba(14, 27, 42, 0.7);
+    border-radius: 0px 0px 8px 8px;
+    padding-bottom: 4%;
+    border: none;
+}
+
+.postedBy {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    color: white;
+    padding: 1em;
+}
+
+.message {
+    font-family: 'Questrial', sans-serif;
+    color: white;
+    padding: 1em;
+}

@@ -10,6 +10,6 @@
 <head>
 </head>
 <body>
-    <% response.sendRedirect("/helloapp_war/login.jsp"); %>
+<% response.sendRedirect("/helloapp_war/login.jsp"); %>
 </body>
 </html>

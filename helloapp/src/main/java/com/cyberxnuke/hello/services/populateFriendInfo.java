@@ -14,7 +14,7 @@ public class populateFriendInfo extends HttpServlet {
 
     HttpSession loginSession;
     dbDAO dbObj;
-    boolean checkNewSignUp;
+//    boolean checkNewSignUp;
 
     static String username;
     static String name;
@@ -32,8 +32,8 @@ public class populateFriendInfo extends HttpServlet {
             try {
                 dbObj.connectToDatabase();
                 username = dbObj.getUsername(Integer.parseInt(request.getParameter("userID")));
-                checkNewSignUp = dbObj.checkIfUserExists(username);
-                ArrayList userDetails = dbObj.getUserDetails(username, checkNewSignUp);
+//                checkNewSignUp = dbObj.checkIfUserExists(username);
+                ArrayList userDetails = dbObj.getUserDetails(username);
                 name = userDetails.get(0).toString();
                 description = userDetails.get(1).toString();
                 role = userDetails.get(3).toString();
@@ -45,7 +45,7 @@ public class populateFriendInfo extends HttpServlet {
         }
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 

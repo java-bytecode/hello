@@ -41,7 +41,7 @@ public class Signup extends HttpServlet {
 
         // Connect To Database
         try {
-            if(dbObj.isDatabaseConnected()) {
+            if (dbObj.isDatabaseConnected()) {
                 dbObj.connectToDatabase();
                 System.out.println("Connected from signup.");
             }
@@ -56,47 +56,44 @@ public class Signup extends HttpServlet {
         try {
             matchUsername = pattern.matcher(username);
             matchPassword = pattern.matcher(password);
-        } catch (Exception e){
+        } catch (Exception e) {
             response.sendRedirect("signup.jsp");
         }
 
         // Signup
         try {
             // Check if username and password is available in the database
-            if(dbObj.checkIfUserExists(username)){
+            if (dbObj.checkIfUserExists(username)) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Username is already taken!');");
                 out.println("location='signup.jsp';");
                 out.println("</script>");
-            } else if(username == null){
+            } else if (username == null) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Username cannot be empty! How do you think you will login?');");
                 out.println("location='signup.jsp';");
                 out.println("</script>");
-            } else if(password == null){
+            } else if (password == null) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Password cannot be empty! How do you think you will login?');");
                 out.println("location='signup.jsp';");
                 out.println("</script>");
-            } else if(!matchUsername.find() || !matchPassword.find()){
+            } else if (!matchUsername.find() || !matchPassword.find()) {
                 out.println("<script type=\"text/javascript\">");
                 out.println("alert('Username and Password should be of minimum 5 characters each and _@# special characters are only allowed. Try again!');");
                 out.println("location='signup.jsp';");
                 out.println("</script>");
             } else {
-                if(dbObj.signup(username, password))
-                {
-                    loginSession.setAttribute("loggedIn", true);
+                if (dbObj.signup(username, password)) {
                     loginSession.setAttribute("username", username);
                     out.println("<script type=\"text/javascript\">");
-                    out.println("alert('Thank You for signing up! You will now be redirected to the settings page.');");
-                    out.println("location='settings.jsp';");
+                    out.println("alert('Thank You for signing up! Enter your profile details now.');");
+                    out.println("location='onboarding/profileInfo.jsp';");
                     out.println("</script>");
                 } else {
-                    loginSession.setAttribute("loggedIn", false);
                     out.println("<script type=\"text/javascript\">");
                     out.println("alert('Please try again later!');");
-                    out.println("location='settings.jsp';");
+                    out.println("location='login.jsp';");
                     out.println("</script>");
                 }
             }

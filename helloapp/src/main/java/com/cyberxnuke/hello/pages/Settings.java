@@ -19,7 +19,7 @@ public class Settings extends HttpServlet {
     HttpSession loginSession;
     PrintWriter out;
     dbDAO dbObj;
-    boolean isCheckNewSignUpFromDB;
+//    boolean isCheckNewSignUpFromDB;
 
     {
         dbObj = dbDAO.getInstance();
@@ -31,29 +31,19 @@ public class Settings extends HttpServlet {
         loginSession = request.getSession();
         String username = (String) loginSession.getAttribute("username");
 
-        if(checkLogin.checkLogin(request, response)) {
+        if (checkLogin.checkLogin(request, response)) {
             String name = request.getParameter("name");
             String description = request.getParameter("description");
             String email = request.getParameter("emailAddress");
             try {
-                isCheckNewSignUpFromDB = dbObj.checkIfUserExists(username);
-                if(!isCheckNewSignUpFromDB) {
                     if (dbObj.updateUserDetails(username, name, description, email)) {
                         out.println("<script type=\"text/javascript\">");
                         out.println("alert('Settings Updated!');");
                         out.println("location='settings.jsp';");
                         out.println("</script>");
                     }
-                } else {
-                    if (dbObj.insertUserDetails(username, name, description, email)) {
-                        out.println("<script type=\"text/javascript\">");
-                        out.println("alert('Your settings have been updated!');");
-                        out.println("location='settings.jsp';");
-                        out.println("</script>");
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+                } catch (SQLException throwables) {
+                throwables.printStackTrace();
             }
         } else {
             response.sendRedirect("login.jsp");

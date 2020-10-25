@@ -11,8 +11,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/profile.css" />
-    <link rel="stylesheet" href="styles/menu_loggedin.css" />
+    <link rel="stylesheet" href="styles/profile.css"/>
+    <link rel="stylesheet" href="styles/menu_loggedin.css"/>
     <title>My Profile - The Hello App</title>
 </head>
 <body>
@@ -26,7 +26,9 @@
                 <li><a href="settings.jsp">Settings</a></li>
             </ul>
         </nav>
-        <a class="logout" href="logout"><button>Logout</button></a>
+        <a class="logout" href="logout">
+            <button>Logout</button>
+        </a>
     </header>
 </div>
 <!-- Profile -->
@@ -36,10 +38,10 @@
         <jsp:include page="/populateProfileInfo" flush="true"></jsp:include>
         <div class="photo">
             <img src=<%
-                if(checkLogin.checkLogin(request, response)){
+                if (checkLogin.checkLogin(request, response)) {
                     dbDAOobj.getProfilePicture(loginSession.getAttribute("username").toString(), out);
                 }
-                 %>/>
+            %>/>
         </div>
         <div class="username">
             <%=populateProfileInfo.getName()%>
@@ -57,8 +59,8 @@
     </div>
     <!-- 2nd Child of Profile -->
     <div class="status">
-        <% if(checkLogin.checkLogin(request, response)) {
-            dbDAOobj.getUserStatuses(out);
+        <% if (checkLogin.checkLogin(request, response)) {
+            dbDAOobj.getUserStatuses(loginSession.getAttribute("username").toString(), out);
         }%>
     </div>
 </div>

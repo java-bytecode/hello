@@ -34,7 +34,7 @@ header {
     justify-content: flex-end;
     align-items: center;
     padding: 20px 10%; /* 30px top and bottom, 10% on the sides */
-    background-color:rgba(53, 53, 53, 0.8);
+    background-color: rgba(53, 53, 53, 0.8);
     /* background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../assets/4024630.jpg');
     background-size: cover;
     background-blend-mode: darken; */
@@ -54,7 +54,7 @@ header {
 }
 
 .nav__links li a:hover {
-    color:#0088a9
+    color: #0088a9
 }
 
 button {
@@ -68,5 +68,5 @@ button {
 }
 
 button:hover {
-    background-color: rgba(0,136,169,0.8);
+    background-color: rgba(0, 136, 169, 0.8);
 }

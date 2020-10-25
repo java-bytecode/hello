@@ -21,7 +21,7 @@ public class checkLogin extends HttpServlet {
             } else {
                 return false;
             }
-        } catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }

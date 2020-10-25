@@ -14,8 +14,8 @@ body {
 
 .profile {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    /*justify-content: center;*/
+    /*align-items: center;*/
     flex-wrap: wrap;
     /* background: #e74c3c; */
 }
@@ -27,22 +27,22 @@ body {
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 30vw;
-    border: 1px solid white;
+    width: 20vw;
+    /*border: 1px solid white;*/
     border-radius: 10px;
     margin: 7%;
     flex-wrap: wrap;
-    background-color:rgba(53, 53, 53, 0.7);
+    /*background-color: rgba(53, 53, 53, 0.7);*/
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
     .profileInfo {
         height: auto;
         width: 20vw;
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .profileInfo {
         height: auto;
         width: 28vw;
@@ -54,6 +54,7 @@ body {
     border-radius: 8px 8px 0px 0px;
     width: 100%;
     height: auto;
+    background-color: rgba(53, 53, 53, 0.7);
 }
 
 .username {
@@ -61,8 +62,10 @@ body {
     font-size: 30px;
     color: white;
     padding: 5%;
-    margin-bottom: 10%;
+    padding-bottom: 10%;
+    /*margin-bottom: 10%;*/
     text-align: center;
+    background-color: rgba(53, 53, 53, 0.7);
 }
 
 .roletext, #desc {
@@ -114,11 +117,11 @@ body {
     /* justify-content: center; */
     /* align-items: center; */
     /* flex-wrap: wrap; */
-    background-color:rgba(53, 53, 53, 0.7);
+    background-color: rgba(53, 53, 53, 0.7);
 }
 
 .status > .post {
-    background-color:#25CCF7;
+    background-color: #25CCF7;
     padding-bottom: 2%;
 }
 
@@ -138,12 +141,12 @@ body {
 }
 
 .status > .post:nth-child(4) {
-    background-color:rgba(119, 141, 169, 0.7);
+    background-color: rgba(119, 141, 169, 0.7);
     border: none;
 }
 
 .status > .post:nth-child(5) {
-    background-color:rgba(14, 27, 42, 0.7);
+    background-color: rgba(14, 27, 42, 0.7);
     border-radius: 0px 0px 8px 8px;
     padding-bottom: 4%;
     border: none;
@@ -160,4 +163,84 @@ body {
     font-family: 'Questrial', sans-serif;
     color: white;
     padding: 1em;
+}
+
+/* 2nd Child
+   Friends */
+
+.friends {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50vw;
+    /*border: 1px solid white;*/
+    border-radius: 10px;
+    margin-top: 7%;
+    justify-content: center;
+    margin-bottom: 2%;
+    /* align-items: center; */
+    /* flex-wrap: wrap; */
+    background-color: rgba(53, 53, 53, 0.7);
+}
+
+.friends > .friend {
+    background-color: #25CCF7;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.friends > .friend:nth-child(1) {
+    background-color: rgba(14, 27, 42, 0.8);
+    border-radius: 8px 8px 0px 0px;
+    flex-grow: 1;
+}
+
+.friends > .friend:nth-child(2) {
+    background-color: rgba(27, 38, 59, 0.7);
+    border: none;
+    flex-grow: 1;
+}
+
+.friends > .friend:nth-child(3) {
+    background-color: rgba(65, 90, 119, 0.7);
+    border: none;
+    flex-grow: 1;
+}
+
+.friends > .friend:nth-child(4) {
+    background-color: rgba(119, 141, 169, 0.7);
+    border: none;
+    flex-grow: 1;
+}
+
+.friends > .friend:nth-child(5) {
+    background-color: rgba(14, 27, 42, 0.7);
+    border-radius: 0px 0px 8px 8px;
+    /* padding-bottom: 1%; */
+    border: none;
+    flex-grow: 1;
+}
+
+.user > img {
+    height: 1.5em;
+    width: auto;
+    padding-left: 2%;
+    padding-right: 0.1em;
+}
+
+#friendURL {
+    font-family: 'Dosis', sans-serif;
+    font-weight: 700;
+    color: white;
+    /*padding: 1em;*/
+}
+
+.role, #noMutualFriendMessage {
+    font-family: 'Questrial', sans-serif;
+    color: white;
+    padding: 1em;
+}
+
+#noMutualFriendMessage {
+    font-weight: bold;
 }

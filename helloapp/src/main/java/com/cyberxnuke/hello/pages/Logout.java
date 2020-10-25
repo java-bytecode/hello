@@ -22,13 +22,13 @@ public class Logout extends HttpServlet {
 
         try {
             boolean loginStatus = (boolean) loginSession.getAttribute("loggedIn");
-            if(loginStatus){
+            if (loginStatus) {
                 loginSession.setAttribute("loggedIn", false);
                 loginSession.setAttribute("username", null);
                 dbObj.closeConnection();
                 response.sendRedirect("login.jsp");
             }
-        } catch(Exception e){
+        } catch (Exception e) {
 //            response.sendRedirect("login.jsp");
             e.fillInStackTrace();
         }

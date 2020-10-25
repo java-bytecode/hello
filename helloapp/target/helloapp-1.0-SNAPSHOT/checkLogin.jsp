@@ -23,13 +23,19 @@
     loginSession = request.getSession();
     try {
         boolean loginStatus = (boolean) loginSession.getAttribute("loggedIn");
-        if(!loginStatus){
+        boolean newUserSignUp = dbDAOobj.checkIfUserInsertedSettings(loginSession.getAttribute("username").toString());
+
+        if(!newUserSignUp && !request.getRequestURI().endsWith("profileInfo.jsp")){
+            response.sendRedirect("onboarding/profileInfo.jsp?needToCompleteSignupFirst=1");
+        }
+
+        if (!loginStatus) {
             response.sendRedirect("login.jsp");
         }
-    } catch(Exception e){
-        response.sendRedirect("login.jsp");
+    } catch (Exception e) {
+        // response.sendRedirect("login.jsp");
     }
-    %>
+%>
 <html>
 <head>
 </head>

@@ -55,11 +55,11 @@ public class Login extends HttpServlet {
         // Check Login
         try {
             // Check if username and password is available in the database
-            if(dbObj.login(username, password)){
+            if (dbObj.login(username, password)) {
                 response.sendRedirect("profile.jsp");
                 loginSession.setAttribute("loggedIn", true);
                 loginSession.setAttribute("username", username);
-            } else if(username == null || password == null){
+            } else if (username == null || password == null) {
                 response.sendRedirect("login.jsp");
             } else {
                 out.println("<script type=\"text/javascript\">");

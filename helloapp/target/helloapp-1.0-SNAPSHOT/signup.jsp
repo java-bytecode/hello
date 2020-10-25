@@ -10,8 +10,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/menu_login.css" />
-    <link rel="stylesheet" href="styles/loginbox.css" />
+    <link rel="stylesheet" href="styles/menu_login.css"/>
+    <link rel="stylesheet" href="styles/loginbox.css"/>
     <title>Signup - The Hello App</title>
 </head>
 <body>
@@ -28,10 +28,10 @@
     <div class="verticallinecolumn verticalLine"></div>
     <div class="logincolumn">
         <h1>New User</h1>
-        <form class="login" action="signupDisabled.jsp" method="post" autocomplete="off">
+        <form class="login" action="signup" method="post" autocomplete="off">
             <input type="text" id="username" name="username" placeholder="Username" required/>
             <input type="password" id="password" name="password" placeholder="Password" required/>
-            <input type="submit" name="signup" value="Signup" />
+            <input type="submit" name="signup" value="Signup"/>
         </form>
         <a href="login.jsp" class="signup">Already have an account?</a>
     </div>

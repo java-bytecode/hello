@@ -11,20 +11,20 @@ Author: Vineeth Penugonda
 .friends {
     display: flex;
     flex-direction: column;
-    height: auto;
+    height: 100%;
     width: 50vw;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     border-radius: 10px;
     margin-top: 7%;
     justify-content: center;
     margin-bottom: 2%;
     /* align-items: center; */
     /* flex-wrap: wrap; */
-    background-color:rgba(53, 53, 53, 0.7);
+    background-color: rgba(53, 53, 53, 0.7);
 }
 
 .friends > .friend {
-    background-color:#25CCF7;
+    background-color: #25CCF7;
     padding-top: 5%;
     padding-bottom: 2%;
 }
@@ -32,28 +32,33 @@ Author: Vineeth Penugonda
 .friends > .friend:nth-child(1) {
     background-color: rgba(14, 27, 42, 0.8);
     border-radius: 8px 8px 0px 0px;
+    flex-grow: 1;
 }
 
 .friends > .friend:nth-child(2) {
     background-color: rgba(27, 38, 59, 0.7);
     border: none;
+    flex-grow: 1;
 }
 
 .friends > .friend:nth-child(3) {
     background-color: rgba(65, 90, 119, 0.7);
     border: none;
+    flex-grow: 1;
 }
 
 .friends > .friend:nth-child(4) {
-    background-color:rgba(119, 141, 169, 0.7);
+    background-color: rgba(119, 141, 169, 0.7);
     border: none;
+    flex-grow: 1;
 }
 
 .friends > .friend:nth-child(5) {
-    background-color:rgba(14, 27, 42, 0.7);
+    background-color: rgba(14, 27, 42, 0.7);
     border-radius: 0px 0px 8px 8px;
     /* padding-bottom: 1%; */
     border: none;
+    flex-grow: 1;
 }
 
 .user > img {
@@ -70,8 +75,12 @@ Author: Vineeth Penugonda
     /*padding: 1em;*/
 }
 
-.role {
-   font-family: 'Questrial', sans-serif;
-   color: white;
-   padding: 1em; 
+.role, #noFriendsMessage {
+    font-family: 'Questrial', sans-serif;
+    color: white;
+    padding: 1em;
+}
+
+#noFriendsMessage {
+    font-weight: bold;
 }

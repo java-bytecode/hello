@@ -14,7 +14,6 @@ public class populateProfileInfo extends HttpServlet {
 
     HttpSession loginSession;
     dbDAO dbObj;
-    boolean checkNewSignUp;
 
     static String username;
     static String name;
@@ -35,20 +34,19 @@ public class populateProfileInfo extends HttpServlet {
                 //
             }
 
-        try {
-            dbObj.connectToDatabase();
-            checkNewSignUp = dbObj.checkIfUserExists(username);
-            ArrayList userDetails = dbObj.getUserDetails(username, checkNewSignUp);
-            name = userDetails.get(0).toString();
-            description = userDetails.get(1).toString();
-            role = userDetails.get(3).toString();
-        } catch (Exception e) {
-            e.fillInStackTrace();
+            try {
+                dbObj.connectToDatabase();
+                ArrayList userDetails = dbObj.getUserDetails(username);
+                name = userDetails.get(0).toString();
+                description = userDetails.get(1).toString();
+                role = userDetails.get(3).toString();
+            } catch (Exception e) {
+                e.fillInStackTrace();
+            }
+        } else {
+            response.sendRedirect("login.jsp");
         }
-    } else {
-        response.sendRedirect("login.jsp");
     }
-}
 
     public String getName() {
         if (name == null) {

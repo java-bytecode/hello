@@ -11,9 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/profile.css" />
-    <link rel="stylesheet" href="styles/menu_loggedin.css" />
-    <link rel="stylesheet" href="styles/settings.css" />
+    <link rel="stylesheet" href="styles/profile.css"/>
+    <link rel="stylesheet" href="styles/menu_loggedin.css"/>
+    <link rel="stylesheet" href="styles/settings.css"/>
     <title>Settings - The Hello App</title>
 </head>
 <body>
@@ -27,7 +27,9 @@
                 <li><a href="settings.jsp">Settings</a></li>
             </ul>
         </nav>
-        <a class="logout" href="logout"><button>Logout</button></a>
+        <a class="logout" href="logout">
+            <button>Logout</button>
+        </a>
     </header>
 </div>
 <!-- Profile -->
@@ -37,7 +39,7 @@
         <jsp:include page="/populateProfileInfo" flush="true"></jsp:include>
         <div class="photo">
             <img src=<%
-                if(checkLogin.checkLogin(request, response)){
+                if (checkLogin.checkLogin(request, response)) {
                     dbDAOobj.getProfilePicture(loginSession.getAttribute("username").toString(), out);
                 }
             %>/>
@@ -67,11 +69,13 @@
             </div>
             <div>
                 <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Description"><%=populateSettings.getDescription()%></textarea>
+                <textarea id="description" name="description"
+                          placeholder="Description"><%=populateSettings.getDescription()%></textarea>
             </div>
             <div>
                 <label for="emailAddress">Email Address</label>
-                <input type="email" id="emailAddress" name="emailAddress" placeholder="Email" value="<%=populateSettings.getEmail()%>"/>
+                <input type="email" id="emailAddress" name="emailAddress" placeholder="Email"
+                       value="<%=populateSettings.getEmail()%>"/>
             </div>
             <input type="submit" name="submit"/>
         </form>

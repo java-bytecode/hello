@@ -1,9 +1,7 @@
 package com.cyberxnuke.hello.services;
 
 import javax.servlet.jsp.JspWriter;
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -13,7 +11,7 @@ public class dbDAO {
     private String dbURL = "jdbc:mysql://localhost:3306/";
 
     private String dbName = "helloDB";
-    private String dbUsername = "root";
+    private String dbUsername = "admin";
     private String dbPassword = "Vineethp@1997";
     private String dbString = "?serverTimezone=UTC";
 
@@ -68,15 +66,15 @@ public class dbDAO {
     }
 
     public boolean checkIfUserExists(String username) throws SQLException {
-        PreparedStatement ps = con.prepareStatement("SELECT * FROM Users JOIN UsersLogin UL on UL.userID = Users.userID WHERE username=?;");
+        PreparedStatement ps = con.prepareStatement("SELECT * FROM UsersLogin WHERE username=?;");
         ps.setString(1, username);
 
         ResultSet resultSet = ps.executeQuery();
 
         if (resultSet.next()) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 
@@ -101,8 +99,7 @@ public class dbDAO {
         }
     }
 
-    public ArrayList getUserDetails(String username, boolean newSignUp) throws SQLException {
-        if (!newSignUp) {
+    public ArrayList getUserDetails(String username) throws SQLException {
             ArrayList userDetailsList = new ArrayList();
             System.out.println("UserDetails: " + username);
             String getUserDetailsString = "SELECT * FROM Users JOIN UsersLogin UL on UL.userID = Users.userID WHERE username=?;";
@@ -119,7 +116,7 @@ public class dbDAO {
 
                 return userDetailsList;
             }
-        }
+
         return null;
     }
 
@@ -152,7 +149,7 @@ public class dbDAO {
         rsUserID.next();
         int userID = Integer.parseInt(rsUserID.getString(1));
 
-        String setUserDetailsString = "INSERT INTO Users VALUES (?, ?, ?, ?, ?, null);";
+        String setUserDetailsString = "INSERT INTO Users VALUES (?, ?, ?, ?, ?, \"random_pp_m.png\");";
         PreparedStatement ps = con.prepareStatement(setUserDetailsString);
         ps.setString(1, String.valueOf(userID));
         ps.setString(2, name);
@@ -169,7 +166,6 @@ public class dbDAO {
     }
 
     public boolean checkIfUserInsertedSettings(String username) throws SQLException {
-        // Need userID first so we could increment it
         String getUserIDString = "SELECT * FROM Users JOIN UsersLogin UL on UL.userID = Users.userID WHERE username=?;";
 
         PreparedStatement psUserID = con.prepareStatement(getUserIDString);
@@ -183,19 +179,32 @@ public class dbDAO {
         }
     }
 
-    public void getUserStatuses(JspWriter out) throws SQLException, IOException {
-        String getUserStatusString = "SELECT name, message, likes FROM Status\n" +
-                "    JOIN UserStatus US on US.statusID = Status.statusID\n" +
-                "    JOIN Users U on US.userID = U.userID;";
+    public void getUserStatuses(String username, JspWriter out) throws SQLException, IOException {
+        String getUserStatusString = "SELECT name, message FROM (SELECT Users.userID, name FROM UsersLogin\n" +
+                "JOIN Friends on UsersLogin.userID = Friends.userID\n" +
+                "JOIN Users on Friends.friendID = Users.userID\n" +
+                "WHERE username=?) t1 JOIN (SELECT UserStatus.userID, message FROM Status\n" +
+                "    JOIN UserStatus on Status.statusID = UserStatus.statusID\n" +
+                "    JOIN Users on UserStatus.userID = Users.userID) t2 ON\n" +
+                "        t1.userID = t2.userID;";
 
-        Statement statement = con.createStatement();
-        ResultSet userStatuses = statement.executeQuery(getUserStatusString);
+        PreparedStatement userStatusesList = con.prepareStatement(getUserStatusString,
+                ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        userStatusesList.setString(1, username);
+        ResultSet userStatuses = userStatusesList.executeQuery();
 
-        while (userStatuses.next()) {
-            out.println("<div class=\"post\">");
-            out.println("<div class=\"postedBy\"><img src=\"assets/icons/chat.png\"\"/>" + userStatuses.getString(1) + "</div>");
-            out.println("<div class=\"message\">" + userStatuses.getString(2) + "</div>");
+        if (!userStatuses.next()) {
+            out.println("<div id=\"noStatuses\">" + "No Statuses/Messages available. Go make some friends!" + "</div>");
             out.println("</div>");
+        } else {
+            userStatuses.beforeFirst();
+            while (userStatuses.next()) {
+                out.println("<div class=\"post\">");
+                out.println("<div class=\"postedBy\"><img src=\"assets/icons/chat.png\"\"/>" + userStatuses.getString(1) + "</div>");
+                out.println("<div class=\"message\">" + userStatuses.getString(2) + "</div>");
+                out.println("</div>");
+            }
         }
     }
 
@@ -205,15 +214,53 @@ public class dbDAO {
                 "    JOIN Users on Friends.friendID = Users.userID\n" +
                 "    WHERE username=?;\n";
 
-        PreparedStatement psFriendsList = con.prepareStatement(getFriendsListString);
+        PreparedStatement psFriendsList = con.prepareStatement(getFriendsListString,
+                ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
         psFriendsList.setString(1, username);
         ResultSet friendsList = psFriendsList.executeQuery();
 
-        while (friendsList.next()) {
-            out.println("<div class=\"friend\">");
-            out.println("<div class=\"user\"><img src=\"assets/icons/user.png\"\"/><a id=\"friendURL\" href=\"profileView.jsp?userID=" + friendsList.getString(1) + "\">" + friendsList.getString(2) + "</a></div>");
-            out.println("<div class=\"role\">" + friendsList.getString(3) + "</div>");
+        if (!friendsList.next()) {
+            out.println("<div id=\"noFriendsMessage\">" + "You don't have any friends. Go make some friends!" + "</div>");
             out.println("</div>");
+        } else {
+            friendsList.beforeFirst();
+            while (friendsList.next()) {
+                out.println("<div class=\"friend\">");
+                out.println("<div class=\"user\"><img src=\"assets/icons/user.png\"\"/><a id=\"friendURL\" href=\"profileView.jsp?userID=" + friendsList.getString(1) + "\">" + friendsList.getString(2) + "</a></div>");
+                out.println("<div class=\"role\">" + friendsList.getString(3) + "</div>");
+                out.println("</div>");
+            }
+        }
+    }
+
+    public void getMutualFriendsList(String friendUserID, String username, JspWriter out) throws SQLException, IOException {
+        String getMutualFriendsListString = "SELECT t1.userID, t1.name, t1.description FROM (SELECT Users.userID, name, description FROM UsersLogin\n" +
+                "JOIN Friends on UsersLogin.userID = Friends.userID\n" +
+                "JOIN Users on Friends.friendID = Users.userID\n" +
+                "WHERE Friends.userID=?) t1 JOIN (SELECT Users.userID, name, description FROM UsersLogin\n" +
+                "JOIN Friends on UsersLogin.userID = Friends.userID\n" +
+                "JOIN Users on Friends.friendID = Users.userID\n" +
+                "WHERE username=?) t2\n" +
+                "    ON t1.userID = t2.userID ;";
+
+        PreparedStatement psMutualFriendsList = con.prepareStatement(getMutualFriendsListString,
+                ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+        psMutualFriendsList.setString(1, friendUserID);
+        psMutualFriendsList.setString(2, username);
+        ResultSet mutualFriendsList = psMutualFriendsList.executeQuery();
+        if (!mutualFriendsList.next()) {
+            out.println("<div id=\"noMutualFriendMessage\">" + "You don't have any mutual friends!" + "</div>");
+            out.println("</div>");
+        } else {
+            mutualFriendsList.beforeFirst();
+            while (mutualFriendsList.next()) {
+                out.println("<div class=\"friend\">");
+                out.println("<div class=\"user\"><img src=\"assets/icons/user.png\"\"/><a id=\"friendURL\" href=\"profileView.jsp?userID=" + mutualFriendsList.getString(1) + "\">" + mutualFriendsList.getString(2) + "</a></div>");
+                out.println("<div class=\"role\">" + mutualFriendsList.getString(3) + "</div>");
+                out.println("</div>");
+            }
         }
     }
 

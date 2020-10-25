@@ -11,9 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/profile.css" />
-    <link rel="stylesheet" href="styles/friends.css" />
-    <link rel="stylesheet" href="styles/menu_loggedin.css" />
+    <link rel="stylesheet" href="styles/profile.css"/>
+    <link rel="stylesheet" href="styles/friends.css"/>
+    <link rel="stylesheet" href="styles/menu_loggedin.css"/>
     <title>Friends - The Hello App</title>
 </head>
 <body>
@@ -27,7 +27,9 @@
                 <li><a href="settings.jsp">Settings</a></li>
             </ul>
         </nav>
-        <a class="logout" href="logout"><button>Logout</button></a>
+        <a class="logout" href="logout">
+            <button>Logout</button>
+        </a>
     </header>
 </div>
 <!-- Profile -->
@@ -37,7 +39,7 @@
         <jsp:include page="/populateProfileInfo" flush="true"></jsp:include>
         <div class="photo">
             <img src=<%
-                if(checkLogin.checkLogin(request, response)){
+                if (checkLogin.checkLogin(request, response)) {
                     dbDAOobj.getProfilePicture(loginSession.getAttribute("username").toString(), out);
                 }
             %>/>
@@ -58,7 +60,7 @@
     </div>
     <!-- 2nd Child of Friends -->
     <div class="friends">
-        <% if(checkLogin.checkLogin(request, response)) {
+        <% if (checkLogin.checkLogin(request, response)) {
             dbDAOobj.getFriendsList(loginSession.getAttribute("username").toString(), out);
         } %>
     </div>

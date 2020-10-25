@@ -59,4 +59,12 @@
         <servlet-name>PopulateFriendInfoServlet</servlet-name>
         <url-pattern>/populateFriendInfo</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>OnboardingInsertUserDetails</servlet-name>
+        <servlet-class>com.cyberxnuke.hello.onboarding.profileInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OnboardingInsertUserDetails</servlet-name>
+        <url-pattern>/signupProfileInfo</url-pattern>
+    </servlet-mapping>
 </web-app>
